@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Region from "./region";
 
 class RegionCollection extends Component {
   state = {
@@ -23,6 +24,10 @@ class RegionCollection extends Component {
         });
   };
 
+  region_click = (name) => {
+    this.refs.name.innerHTML = name
+  };
+
   componentWillMount() {
     this.request_data();
   }
@@ -30,15 +35,14 @@ class RegionCollection extends Component {
   render() {
     var regions = this.state.regions.map(function(region) {
       return (
-          <div className="Region" key={region}>
-            <a href={"https://house-api-test.herokuapp.com/region?name="+ region}>
-              {region}
-            </a>
-          </div>
-      )});
+          <Region name={region} key={region} onClick={this.region_click}/>
+      )}, this);
     return(
-       <div className="Collection">
-         {regions}
+       <div className="RegionsCollection">
+         <h3 ref="name">Regions</h3>
+         <div  className="Regions">
+           {regions}
+         </div>
        </div>
     );
   }

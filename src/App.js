@@ -14,8 +14,11 @@ class App extends Component {
         <p className="App-intro">
           To get started, select region from list.
         </p>
-        <div className="Regions">
+        <div>
           <RegionCollection/>
+        </div>
+        <div className="Years">
+
         </div>
       </div>
     );
