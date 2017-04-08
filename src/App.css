@@ -32,7 +32,11 @@
   display: flex;
 }
 
-.Region {
+.RegionsCollection .Years  {
+  display: flex;
+}
+
+.Region, .Year {
   padding: 8px 8px 8px 8px;
 }
 
