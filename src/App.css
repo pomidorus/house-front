@@ -36,7 +36,11 @@
   display: flex;
 }
 
-.Region, .Year {
+.RegionsCollection .Months  {
+  display: flex;
+}
+
+.Region, .Year, .Month {
   padding: 8px 8px 8px 8px;
 }
 
