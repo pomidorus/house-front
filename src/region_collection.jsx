@@ -112,15 +112,15 @@ class RegionCollection extends Component {
     this.request_years(name);
     this.setState({years: []});
     this.setState({months: []});
+    this.setState({region: name});
     this.refs.year.innerHTML = 'Select Year';
     this.refs.month.innerHTML = 'Select Month';
-    this.state.region = name;
   };
 
   year_click = (year) => {
     this.request_months(year);
     this.setState({months: []});
-    this.state.year = year;
+    this.setState({year: year});
     this.refs.year.innerHTML = year;
     this.refs.month.innerHTML = 'Select Month';
   };
@@ -128,7 +128,7 @@ class RegionCollection extends Component {
   year_to_click = (year) => {
     this.request_months_to(year);
     this.setState({months_to: []});
-    this.state.year_to = year;
+    this.setState({year_to: year});
     this.refs.year_to.innerHTML = year;
     this.refs.month_to.innerHTML = 'Select Month';
   };
@@ -197,6 +197,8 @@ class RegionCollection extends Component {
          <div className="Months">
            {months_to}
          </div>
+         <h2>Price</h2>
+         
        </div>
     );
   }
