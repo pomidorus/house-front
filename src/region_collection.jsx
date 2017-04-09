@@ -14,7 +14,10 @@ class RegionCollection extends Component {
     years:[],
     years_to: [],
     months: [],
-    months_to: []
+    months_to: [],
+    index_from: null,
+    index_to: null,
+    price: 100000
   };
 
   add_regions_to_state = (element, index, array) => {
@@ -136,16 +139,31 @@ class RegionCollection extends Component {
   month_click = (month, index) => {
     this.refs.month.innerHTML = month + ' ' + index;
     this.setState({years_to: []});
+    this.setState({index_from: index});
     this.request_years_to(this.state.region);
   };
 
   month_to_click = (month, index) => {
+    this.setState({index_to: index});
     this.refs.month_to.innerHTML = month + ' ' + index;
   };
 
   componentWillMount() {
     this.request_data();
   }
+
+  index_price = () => {
+    if (this.state.index_from !== null && this.state.index_to !== null) {
+      var indexed_price = (this.state.index_to / this.state.index_from) * this.state.price
+      this.refs.indexed_price.innerHTML = indexed_price
+    } else {
+      alert('Please select From and To dates');
+    }
+  };
+
+  change_price = (event) => {
+    this.setState({price: event.target.value});
+  };
 
   render() {
     var regions = this.state.regions.map(function(region) {
@@ -197,8 +215,12 @@ class RegionCollection extends Component {
          <div className="Months">
            {months_to}
          </div>
-         <h2>Price</h2>
-         
+         <h2>Indexed Price</h2>
+         <div>
+           <input defaultValue={100000} onChange={this.change_price} />
+           <button onClick={this.index_price}>Calculate!</button>
+           <h3 ref="indexed_price"></h3>
+         </div>
        </div>
     );
   }

@@ -17,4 +17,3 @@ class Region extends Component {
 }
 
 export default Region;
-

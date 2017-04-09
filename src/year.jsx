@@ -17,4 +17,3 @@ class Year extends Component {
 }
 
 export default Year;
-
